@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deegy anime</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Стилийн хэсэг */
+        .video-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-left: 5%;
+        }
+        .video-section h3{
+            margin:40px;
+            font-weight: bold;
+            font-size: 5rem;
+        }
+        .video-section p{
+            margin:40px;
+            font-size: 2rem;
+        }
+        .video-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: top;
+            max-width: 100%;
+        }
+
+        .video-player {
+            margin-right: 20px; /* Видео ба гарчиг/тайлбарын хоорондын зай */
+        }
+
+        .video-description {
+            color: rgb(255, 255, 255); /* Гарчиг ба тайлбарын өнгө */
+            text-align: left;
+            max-width: 100%;
+        }
+
+        /* Дэлгэцний өргөн нь 800px-с дээш үед хэрэгжих стилийн дүрэм */
+        @media screen and (min-width: 800px) {
+            .video-section {
+                flex-direction: row;
+            }
+
+            .video-wrapper {
+                flex-direction: row;
+            }
+
+            .video-player {
+                margin-right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo"><span>Deegy</span>Anime</a>
+    </header>
+
+    <section class="video-section">
+        <div class="video-wrapper">
+            <!-- Updated iframe for YouTube videos -->
+            <iframe class="video-player" id="videoPlayer" width="1080" height="620" src="https://www.youtube.com/embed/VQGCKyvzIM4" frameborder="0" allowfullscreen></iframe>
+            <div class="video-description">
+                <h3 id="videoTitle">Гарчиг</h3>
+                <p id="videoText">Тайлбар</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript код -->
+    <script>
+        function getQueryParam(param) {
+            var searchParams = new URLSearchParams(window.location.search);
+            return searchParams.get(param);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var buttonNumber = getQueryParam("button");
+            var videoPlayer = document.querySelector(".video-player");
+            var videoSource = document.getElementById("videoSource");
+            var videoTitle = document.getElementById("videoTitle");
+            var videoText = document.getElementById("videoText");
+
+            // Товчлуурын дугаараас хамаарч өөрчлөлт хийх
+            switch (buttonNumber) {
+                case "1":
+                videoTitle.textContent = "ATTACK ON TITAN";
+                videoText.textContent = "Video description for ATTACK ON TITAN.";
+                videoPlayer.src = "https://www.youtube.com/embed/LV-nazLVmgo&t"; // Replace [VideoID1] with actual YouTube Video ID
+                break;
+            case "2":
+                videoTitle.textContent = "DEMON SLAYER";
+                videoText.textContent = "Video description for DEMON SLAYER.";
+                videoPlayer.src = "https://www.youtube.com/embed/VQGCKyvzIM4"; // Replace [VideoID2] with actual YouTube Video ID
+                break;
+            case "3":
+                videoTitle.textContent = "KAKEGURUI";
+                videoText.textContent = "Video description for KAKEGUUI.";
+                videoPlayer.src = "https://www.youtube.com/embed/cTlHQiRNVl0"; // Replace [VideoID3] with actual YouTube Video ID
+                break;
+            default:
+                videoTitle.textContent = "NARUTO";
+                videoText.textContent = "Video description for NARUTO.";
+                videoPlayer.src = "https://www.youtube.com/embed/QczGoCmX-pI"; // Replace defaultVideo with a default YouTube Video ID
+            }
+
+            // Видеоны эх сурвалжийг шинэчлэх
+            videoPlayer.load();
+        });
+    </script>
+</body>
+</html>
